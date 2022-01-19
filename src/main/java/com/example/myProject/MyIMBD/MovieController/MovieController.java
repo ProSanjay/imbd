@@ -52,20 +52,21 @@ public class MovieController {
     public ResponseEntity<Response> updateRatting(@PathVariable String mName, @PathVariable Integer mRatting)throws MovieNotFound{
         return movieService.updateRatting(mName,mRatting);
     }
-    @GetMapping("/genre/{genre}")
+    @GetMapping("/{genre}")
     public ResponseEntity<Response> fetchbyGenre(@PathVariable String genre) throws MovieNotFound{
         return movieService.fetchbyGenre(genre);
     }
-    @GetMapping("/ratting/{mName}/{mId}")
+    @GetMapping("/{mName}/{mId}")
     public ResponseEntity<Integer> ratting(@PathVariable String mName,@PathVariable String mId) throws MovieNotFound{
         return movieService.rattingByMovie ( mName,mId );
     }
-    @GetMapping("/ratting/{ratting}")
-    public ResponseEntity<Response> movieByRatting(@PathVariable Integer ratting) throws MovieNotFound{
+    @GetMapping("/ratting")
+    public ResponseEntity<Response> movieByRatting(@RequestParam Integer ratting) throws MovieNotFound{
         return movieService.movieByRatting ( ratting  );
     }
-    @GetMapping("/get/{genre}/{yearOfRelease}")
-    public ResponseEntity<Response> movieByGenreYear(@PathVariable String genre,@PathVariable String yearOfRelease) throws MovieNotFound{
+    @GetMapping("/list/{genre}" )
+    public ResponseEntity<Response> movieByGenreYear(@PathVariable String genre,@RequestParam String yearOfRelease) throws MovieNotFound{
+
         return movieService.moviebyGenreYear ( genre,yearOfRelease );
     }
 }

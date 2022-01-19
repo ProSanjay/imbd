@@ -113,7 +113,7 @@ public class MovieService {
         }
     }
     public ResponseEntity<Response> movieByRatting(Integer ratting) throws MovieNotFound{
-        if(movieDAO.getmRatting ()<ratting){
+        if(movieDAO.getmRatting ()<=ratting){
             response.setMessage ( "list of movie by particular ratting" );
             response.setMovieDAO ( movieDAO );
             return  new ResponseEntity<> ( response,HttpStatus.OK );
